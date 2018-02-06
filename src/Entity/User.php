@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,10 +50,31 @@ class User
         
     /**
      * @ORM\Column(type="date")
-     * @var \DateTime
+     * @var DateTime
      */
     private $birthdate;
-    public function getId() {
+     
+     /**
+      * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
+      * @var Collection
+      */
+    private $products;
+
+  
+    public function __construct(){
+       $this->products = new ArrayCollection();
+    }
+    
+    public function getProducts(): Collection{
+        return $this->products;
+    }
+    
+    public function setProducts(Collection $products){
+        $this->products = $products;
+        return $this;
+    }
+
+     public function getId() {
         return $this->id;
     }
 
@@ -71,7 +94,7 @@ class User
         return $this->password;
     }
 
-    public function getUsername() {
+    public function getUsername():\DateTime {
         return $this->username;
     }
 

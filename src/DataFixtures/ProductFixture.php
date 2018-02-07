@@ -20,6 +20,7 @@ class ProductFixture extends Fixture Implements DependentFixtureInterface {
             $user = $this->getReference('user'.rand(1,20));
             $product->SetUser($user);
             $manager->persist($product);
+            $this->addReference('product'.$i,$product);
           
         } 
         

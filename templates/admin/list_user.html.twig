@@ -16,7 +16,8 @@
         {% for user in users %}
             <li>
                 {# <?= htmlspecialchars($user->getFirstneme()); ?>#}
-                {{ user.firstname }} {{ user.lastname }}
+                {{ user.firstname }} {{ user.lastname }}               
+                <a href="{{ path('user_details',{ id : user.id })}}">Détails</a>
             </li>
         {% endfor %}
     </ul>

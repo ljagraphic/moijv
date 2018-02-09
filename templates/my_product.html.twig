@@ -5,11 +5,11 @@
 {% block body %}
 
     <h1> Mes produit</h1>
-  
-{#in peut acceder a lutilisateur connecete grace a la variable app#}
-<ul>
-{% for product in app.user.products %}
-    <li>{{product.name}}</li>    
-{% endfor %}
-</ul>
+
+    {#in peut acceder a lutilisateur connecete grace a la variable app#}
+    <ul>
+        {% for product in app.user.products %}
+            <li>{{product.name}}</li>    
+            {% endfor %}
+    </ul>
 {% endblock %}

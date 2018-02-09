@@ -31,13 +31,14 @@ class LoanController extends Controller
            $image = $product->getImage();
            $fileName= md5(uniqid()).'.'.$image->guessExtension();
            //move_upload_file
-           $image->move('upload/product', $fileName);
+           $image->move('public/uploads/product', $fileName);
            $product->setImage($fileName);
            $product->setUser($this->getUser());
            
            //Enregistrement du produit
            $manager->persist($product);
            $manager->flush();
+           return $this->redirectToRoute('my_product');
        }
        
         return $this->render('add_product.html.twig', [
